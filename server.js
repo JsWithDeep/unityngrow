@@ -7,7 +7,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
-const checkSession = requre('./middleware/checkSession')
+const checkSession = require('./middleware/checkSession')
 // ---------------------------
 // 1. Load environment variables
 // ---------------------------
