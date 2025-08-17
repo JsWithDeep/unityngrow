@@ -50,10 +50,8 @@ app.use(
       imgSrc: ["'self'", "data:", "https://placehold.co"],
       connectSrc: [
         "'self'",
-        "https://ung-backend.onrender.com",
         "https://unityngrow.org",
         "https://www.unityngrow.org",
-        "https://your-hostinger-domain.com"
       ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -69,7 +67,6 @@ app.use(cookieParser());
 const allowedOrigins = [
   "https://unityngrow.org",
   "https://www.unityngrow.org",
-  "https://your-hostinger-domain.com"
 ];
 
 app.use(

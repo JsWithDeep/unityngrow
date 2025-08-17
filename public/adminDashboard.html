@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./styles/components.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+  </head>
+  <body>
+    <!-- Modular Components Placeholders -->
+    <div id="overlay-placeholder"></div>
+    <div id="sidebar-placeholder" class="z-1241"></div>
+    <div id="navbar-placeholder" class="sticky-top z-1250"></div>
+
+    <!-- creating a navbar for dashboard  -->
+    <div class="dashboard_container glass_container">
+      <div class="dash_logo">MyDashboard</div>
+      <div class="dash_links">
+        <a href="#" id="viewApprovals">approvals</a>
+        <a href="#" id="manageUsers">manage users</a>
+        <a href="#" id="withdrawalRequests">Withdrawal Requests </a>
+      </div>
+    </div>
+
+    <!-- the main content goes here  -->
+
+    <div class="dashboard_body">
+      <div class="AdminMeter">
+        <div class="userMeter meter">
+          <h3>Total Users</h3>
+          <p id="totalUsers">--</p>
+        </div>
+        <div class="earningsMeter meter">
+          <h3>total Coins</h3>
+          <p id="totalEarnings">--</p>
+        </div>
+        <div class="pendingTransactions meter">
+          <h3>Pending Requests</h3>
+          <p id="pendingRequests">--</p>
+        </div>
+      </div>
+      <div class="dashboardTable" id="AdmindashboardTable"></div>
+    </div>
+
+    <!-- the main content ends here  -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Component Loader Script -->
+    <script src="./scripts/sessionUser.js"></script>  
+    <script src="./scripts/loader.js"></script>
+    <script src="./scripts/stats.js"></script>
+
+    <script src="./scripts/adminDashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./styles/components.css" />
+  <link rel="stylesheet" href="./styles/home.css" />
+</head>
+
+<body>
+  <!-- Modular Components Placeholders -->
+  <div id="overlay-placeholder"></div>
+  <div id="sidebar-placeholder" class="z-1241"></div>
+  <div id="navbar-placeholder" class="sticky-top z-1250"></div>
+
+  <!-- creating a navbar for dashboard  -->
+  <div class="dashboard_container glass_container">
+    <div class="dash_logo">MyDashboard</div>
+    <div class="dash_links">
+      <a href="#" id="dashboard" class="active">profile</a>
+      <a href="#" id="Teams">my team</a>
+      <a href="#" id="Earnings">my Earnings</a>
+      <a href="/logout" id="logoutBtn">Logout</a>
+    </div>
+  </div>
+
+  <!-- the main content goes here  -->
+
+  <div class="dashboard_body">
+    <h1>heading</h1>
+
+    <div class="dashboardTable" id="dashboardTable"></div>
+  </div>
+
+  <!-- the main content ends here  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+
+  <!-- Component Loader Script -->
+  <script src="./scripts/sessionUser.js"></script>
+  <script src="./scripts/loader.js"></script>
+  <script src="./scripts/dashboard.js"></script>
+
+
+</body>
+
+</html>

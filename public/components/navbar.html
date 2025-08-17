@@ -1,0 +1,85 @@
+<!-- Navbar -->
+<nav class="navbar sticky-top px-3">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Left: Hamburger + Logo -->
+    <div class="d-flex align-items-center">
+      <button class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand d-flex align-items-center text-white gap-2 mb-0" href="./index.html">
+        <img id="logoImage" src="../images/UNG.png" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Right: Coins + Profile + Settings -->
+    <div class="d-flex align-items-center gap-2">
+      <div class="coin-box">
+        <span class="material-symbols-rounded">currency_rupee</span>
+        <span id="user-coins"></span>
+      </div>
+      <button class="nav-icon" id="withdrawSectionBtn">
+        <span class="material-symbols-rounded">person</span>
+      </button>
+      <button class="nav-icon" id="profile-avatar">
+        <!-- <span class="material-symbols-rounded"></span> -->
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Withdraw Section Start -->
+<section id="withdrawSection" class="withdraw_section">
+  <div class="withdraw-container">
+    <h3>Withdraw Coins</h3>
+    <div class="balance">
+      Your Balance: <span id="coinsDisplay"></span> Coins
+    </div>
+
+    <form id="withdrawForm">
+      <div class="amount-buttons">
+        <button type="button" class="pay-option-btn" data-amount="50">
+          ₹50
+        </button>
+        <button type="button" class="pay-option-btn" data-amount="100">
+          ₹100
+        </button>
+        <button type="button" class="pay-option-btn" data-amount="200">
+          ₹200
+        </button>
+        <button type="button" class="pay-option-btn" data-amount="400">
+          ₹400
+        </button>
+        <button type="button" class="pay-option-btn" data-amount="500">
+          500
+        </button>
+        <button type="button" class="pay-option-btn" data-amount="1000">
+          ₹1000
+        </button>
+
+      </div>
+
+      <input type="hidden" name="selectedAmount" id="selectedAmount" required />
+
+      <select id="method" required>
+        <option value="">Choose Method</option>
+        <option value="upi">UPI</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="paypal">PayPal</option>
+      </select>
+
+      <input type="text" id="account" placeholder="Enter UPI ID or Bank Details" required />
+
+      <button type="submit" id="withdrawSubmitBtn" class="submit-btn">Withdraw Now</button>
+    </form>
+
+    <div class="note">Minimum 50 coins must remain in your account.</div>
+  </div>
+</section>
+
+
+<!-- password setting  -->
+
+
+<!-- Withdraw Section End -->

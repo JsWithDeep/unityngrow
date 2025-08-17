@@ -1,0 +1,363 @@
+:root {
+  --color-primary: #1a73e8; /* Professional Blue */
+  --color-primary-dark: #1558b0; /* Darker Blue for hover/CTA */
+  --color-primary-light: #e3f2fd; /* Light Blue for backgrounds */
+
+  --color-secondary: #34a853; /* Google-style green for trust and success */
+  --color-accent: #fbbc05; /* Attention-grabbing, used sparingly (alerts, buttons) */
+
+  --color-bg: #f9fafb; /* Light neutral background */
+  --color-surface: #ffffff; /* Surfaces like cards, modals */
+
+  --color-text: #202124; /* Primary text */
+  --color-text-secondary: #5f6368; /* Secondary/muted text */
+  --color-border: #dadce0; /* Soft gray for borders and dividers */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url("../assets/pexels-scottwebb-27406.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  width: 100vw;
+  list-style: none;
+  text-transform: capitalize;
+}
+
+/* utility classes  */
+a {
+  text-decoration: none;
+}
+.container {
+  width: 80%;
+}
+
+
+#profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #509beb; /* Bootstrap primary */
+  color: greenyellow;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 2050;
+}
+
+.navbar-brand img {
+  height: 30px;
+  width: auto;
+}
+
+.coin-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  font-size: 1rem;
+}
+
+.nav-icon {
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  display: flex;
+
+  background: transparent;
+}
+
+/* Hamburger */
+.hamburger {
+  background: transparent;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+  color: white;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin-bottom: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Sidebar */
+#sidebarMenu {
+  position: fixed;
+  top: 60px;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #94989c;
+  color: white;
+  padding-top: 1rem;
+  transition: left 0.3s ease;
+  z-index: 1041;
+}
+
+#sidebarMenu #admin-panel-link{
+  display: none;
+}
+
+
+#sidebarMenu.show {
+  left: 0;
+}
+
+.menu-link {
+  color: white;
+  padding: 15px 20px;
+  display: block;
+  text-decoration: none;
+}
+
+.menu-link:hover {
+  background-color: #495057;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1040;
+}
+
+#overlay.active {
+  display: block;
+}
+
+
+
+
+/* withdraw section coding  */
+.withdraw_section {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  z-index: 300;
+}
+.withdraw_section.show {
+  display: flex;
+}
+
+/* Withdraw Section Styles */
+#withdrawSection .withdraw-container {
+  background: linear-gradient(to right, #fceabb, #f8b500);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+#withdrawSection h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#withdrawSection .balance {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+#withdrawSection .amount-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pay-option-btn {
+  flex: 1 1 45%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pay-option-btn.selected {
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+}
+
+#withdrawSection .amount-buttons button:hover:not(:disabled) {
+  background: #333;
+  color: #fff;
+}
+
+#withdrawSection .amount-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#withdrawSection .amount-buttons button.active {
+  background: #333;
+  color: #fff;
+}
+
+#withdrawSection input,
+#withdrawSection select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+#withdrawSection .submit-btn {
+  background: #222;
+  color: white;
+  padding: 0.9rem;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#withdrawSection .submit-btn:hover {
+  background: #444;
+}
+
+#withdrawSection .note {
+  font-size: 0.8rem;
+  color: #4e342e;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+/* footer styling  */
+.custom-footer {
+  background-color: #4e4e4e;
+  color: #ddd;
+  font-family: "Segoe UI", sans-serif;
+}
+/* .custom-footer {
+  background-color: var(--color-surface);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+ */
+
+.footer-heading {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+.footer-link {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #00bcd4;
+}
+
+.footer-icon {
+  color: #ccc;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-icon:hover {
+  color: #00bcd4;
+}
+
+.footer-bottom {
+  border-color: #333;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  body {
+    background-image: url(../assets/pexels-karolina-grabowska-5882695.jpg);
+    height: 80vh;
+    width: 100%;
+    background-size: contain;
+    background-position: top;
+  }
+  .navbar-brand {
+    font-size: 0.9rem;
+  }
+  .navbar-brand img {
+    height: 22px;
+  }
+
+  .coin-box,
+  .nav-icon {
+    font-size: 1rem;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+#logoImage{
+  background: white;
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+}

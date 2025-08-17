@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./styles/components.css" />
+  <link rel="stylesheet" href="./styles/home.css" />
+  <link rel="stylesheet" href="./styles/login.css" />
+</head>
+
+<body>
+  <!-- Modular Components Placeholders -->
+  <div id="overlay-placeholder"></div>
+  <div id="sidebar-placeholder" class="z-1241"></div>
+  <div id="navbar-placeholder" class="sticky-top z-1250"></div>
+
+  <section class="login d-flex justify-content-center align-items-center">
+    <div class="loginContainer">
+      <!-- Tabs -->
+      <div class="tabs d-flex justify-content-between mb-4">
+        <div class="tab active w-50 text-center py-2" data-form="login-form">
+          Login
+        </div>
+        <div class="tab w-50 text-center py-2" data-form="register">
+          Register
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="active">
+        <div class="mb-3">
+          <label for="login-number" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control custom-input" id="login-number" placeholder="98765-43210" required />
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control custom-input" id="login-password" placeholder="Enter password"
+            required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <p class="switch-text mt-3 text-center">
+          Don't have an account? <a href="#" data-form="register">Register</a>
+        </p>
+        <p class="switch-text mt-3 text-center">
+          Forgot your password? <a href="#" id="forgot-password-link">click here</a>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register" style="display: none">
+        <div class="mb-3">
+          <label for="reg-name" class="form-label">Full Name</label>
+          <input type="text" class="form-control custom-input" id="reg-name" required />
+        </div>
+        <div class="mb-3">
+          <label for="reg-phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control custom-input" id="reg-phone" required />
+        </div>
+        <div class="mb-3">
+          <label for="reg-email" class="form-label">Email</label>
+          <input type="email" class="form-control custom-input" id="reg-email" required />
+        </div>
+        <div class="mb-3">
+          <label for="reg-password" class="form-label">Password</label>
+          <input type="password" class="form-control custom-input" id="reg-password" required />
+        </div>
+        <div class="mb-3">
+          <label for="referral-phone" class="form-label">Referrer's Phone (optional)</label>
+          <input type="tel" class="form-control custom-input" id="referral-phone" name="referralPhone" />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+        <p class="switch-text mt-3 text-center">
+          Already have an account?
+          <a href="#" data-form="login-form">Login</a>
+
+        </p>
+      </form>
+
+      <!-- OTP Verification Form -->
+      <form id="otp-form" style="display: none">
+        <h3 class="mb-3">Verify OTP</h3>
+        <div class="mb-3">
+          <label for="otp-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="otp-email" readonly />
+        </div>
+        <div class="mb-3">
+          <label for="otp-code" class="form-label">OTP Code</label>
+          <input type="text" class="form-control" id="otp-code" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">
+          Verify OTP
+        </button>
+      </form>
+
+      <!-- Forgot Password Step 1 -->
+      <form id="forgot-password-form" style="display: none">
+        <h3>Forgot Password</h3>
+        <div class="mb-3">
+          <label for="fp-phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="fp-phone" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+      </form>
+
+      <!-- Forgot Password OTP Verification -->
+      <form id="fp-otp-form" style="display: none">
+        <h3>Verify OTP</h3>
+        <input type="email" id="fp-email" hidden />
+        <div class="mb-3">
+          <label for="fp-otp" class="form-label">OTP Code</label>
+          <input type="text" class="form-control" id="fp-otp" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+      </form>
+
+      <!-- New Password Form -->
+      <form id="new-password-form" style="display: none">
+        <h3>Reset Password</h3>
+        <input type="email" id="np-email" hidden />
+        <div class="mb-3">
+          <label for="new-password" class="form-label">New Password</label>
+          <input type="password" class="form-control" id="new-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Change Password</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="./scripts/loader.js"></script>
+  <script src="./scripts/sessionUser.js"></script>
+  <script src="./scripts/login.js"></script>
+
+</body>
+
+</html>

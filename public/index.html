@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketing Site</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/home.css" />
+</head>
+
+<body>
+  <!-- Modular Components Placeholders -->
+  <div id="overlay-placeholder"></div>
+  <div id="sidebar-placeholder" class="z-1241"></div>
+  <div id="navbar-placeholder" class="sticky-top z-1250"></div>
+
+  <!-- Page Content -->
+  <section id="content" class="eighty maincontent">
+    <h1>
+      <span style="color: #28a745">Unity</span><span style="color: #00bcd4;"> N</span>
+      <span style="color: #007bff">Grow</span>
+    </h1>
+    <p class="fst-italic">"Make a Good Life"</p>
+
+    <p style="max-width: 600px; margin: 0 auto">
+      Our NGO site is dedicated to fostering community development and
+      personal growth. We believe in the power of unity and shared progress.
+      Through our initiatives, we aim to uplift individuals and create a
+      supportive environment where everyone has the opportunity to thrive and
+      succeed together.
+    </p>
+    <a href="#packages" class="btn btn-outline-primary mt-3">Explore Packages</a>
+  </section>
+
+  <!-- package section  -->
+  <div id="packages" class="eighty">
+  </div>
+
+  <!-- about section coding  -->
+  <div class="contact_heading" id="contact_heading">
+    <h1>about Us</h1>
+    <p>We are here to help. Reach out to us anytime.</p>
+  </div>
+  <section class="about-section eighty" id="about-section">
+    <div class="glass-card from-left hidden">
+      <h2>Who We Are</h2>
+      <p>
+        As a nonprofit organization, we are dedicated to creating
+        opportunities where everyone can thrive—together. At Unity and Grow,
+        we believe in building a better world by uplifting communities and
+        fostering collective progress. Our mission is to support individuals
+        through education, skill development, and community-driven initiatives
+        that empower them to live with dignity and purpose.
+      </p>
+    </div>
+    <div class="glass-card from-right hidden">
+      <h2>What We Do</h2>
+      <p>
+        Unity and Grow is a community-driven NGO committed to helping people
+        rise together. We work to bridge gaps in education, skill development,
+        and access to basic needs by bringing people and resources together.
+        Our vision is a world where compassion leads to action and where no
+        one is left behind on the journey to a better life.
+      </p>
+    </div>
+  </section>
+
+  <!-- contact section  -->
+  <div class="contact_heading" id="contact_heading">
+    <h1>Contact Us</h1>
+    <p>We are here to help. Reach out to us anytime.</p>
+  </div>
+
+  <section class="contact_section" id="contact_section">
+    <div class="contactdiv contactdiv_left">
+      <h2>Get in Touch</h2>
+      <p><strong>Email:</strong> unityngrow@gmail.com</p>
+      <p><strong>Phone:</strong> +91 84276 97894</p>
+      <p><strong>Location:</strong> Mumbai, India</p>
+      <p><strong>Follow us:</strong></p>
+      <p>
+        <a href="mailto:unityngrow@gmail.com">Email</a>
+        |
+        <a href="#" id="contact_links">Facebook</a>
+        |
+        <a href="#" id="contact_links">LinkedIn</a>
+      </p>
+    </div>
+
+    <div class="contactdiv contactdiv_right">
+      <h2>Send a Message</h2>
+      <form class="contact_form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button class="submit_btn" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- page content ends here -->
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="./scripts/sessionUser.js"></script>
+  <script src="scripts/loader.js"></script>
+  <script src="./scripts/buyPackage.js"></script>
+</body>
+
+</html>
