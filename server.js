@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const MongoStore = require("connect-mongo");  // ✅ ADD THIS
+const MongoStore = require("connect-mongo");
 
 // ---------------------------
 // 1. Load environment variables
@@ -23,6 +23,7 @@ connectDB();
 // ---------------------------
 const app = express();
 const PORT = process.env.PORT || 5000;
+const NODE_ENV = process.env.NODE_ENV || "development";
 
 // ---------------------------
 // 4. Middleware: Security
@@ -45,13 +46,14 @@ app.use(
         "https://fonts.googleapis.com",
         "https://cdnjs.cloudflare.com",
       ],
-      fontSrc: [
-        "'self'",
-        "https://fonts.gstatic.com",
-        "https://cdnjs.cloudflare.com",
-      ],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
       imgSrc: ["'self'", "data:", "https://placehold.co"],
-      connectSrc: ["'self'", "https://ung-backend.onrender.com", "https://unityngrow.org"],
+      connectSrc: [
+        "'self'",
+        "https://ung-backend.onrender.com",
+        "https://unityngrow.org",
+        "https://www.unityngrow.org",
+      ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
@@ -63,13 +65,20 @@ app.use(
 // ---------------------------
 app.use(cookieParser());
 
+const allowedOrigins = [
+  "https://unityngrow.org",
+  "https://www.unityngrow.org",
+];
+
 app.use(
   cors({
-    origin: [
-      "https://unityngrow.org",
-      "https://ung-backend.onrender.com",
-      "http://localhost:5000",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -77,20 +86,20 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ FIXED: Use MongoDB Store for sessions
+// ✅ Use MongoDB Store for sessions
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "dev_secret",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,   // ✅ persistent session store
+      mongoUrl: process.env.MONGO_URI,
       collectionName: "sessions",
     }),
     cookie: {
-      secure: process.env.NODE_ENV === "production", // ✅ works with HTTPS
+      secure: NODE_ENV === "production", // ✅ HTTPS only in prod
       httpOnly: true,
-      sameSite: "none", // ✅ required for cross-domain cookies
+      sameSite: "none", // ✅ cross-site cookies
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
   })
@@ -122,7 +131,7 @@ app.use("/api/buy-package", packageRoutes);
 app.use("/api/admin", adminRoutes);
 
 // ---------------------------
-// 8. Home route
+// 8. Protect main pages
 // ---------------------------
 app.get("/", (req, res) => {
   if (!req.session || !req.session.user) {
@@ -135,11 +144,24 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+// ✅ Extra: Protect index.html and adminDashboard.html if user types URL directly
+app.get("/index.html", (req, res) => {
+  if (!req.session || !req.session.user) {
+    return res.redirect("/login.html");
+  }
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/adminDashboard.html", (req, res) => {
+  if (!req.session || !req.session.user || !req.session.user.isAdmin) {
+    return res.redirect("/login.html");
+  }
+  res.sendFile(path.join(__dirname, "public", "adminDashboard.html"));
+});
+
 // ---------------------------
 // 9. Start server
 // ---------------------------
 app.listen(PORT, () => {
-  console.log(
-    `🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || "development"} mode`
-  );
+  console.log(`🚀 Server running on port ${PORT} in ${NODE_ENV} mode`);
 });
