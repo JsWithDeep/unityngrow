@@ -53,6 +53,7 @@ app.use(
         "https://ung-backend.onrender.com",
         "https://unityngrow.org",
         "https://www.unityngrow.org",
+        "https://your-hostinger-domain.com"
       ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -68,6 +69,7 @@ app.use(cookieParser());
 const allowedOrigins = [
   "https://unityngrow.org",
   "https://www.unityngrow.org",
+  "https://your-hostinger-domain.com"
 ];
 
 app.use(
@@ -98,7 +100,7 @@ app.use(
     }),
     cookie: {
       secure: NODE_ENV === "production", // ✅ HTTPS only in prod
-      httpOnly: true,
+      httpOnly: false,
       sameSite: "none", // ✅ cross-site cookies
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
@@ -110,8 +112,8 @@ app.use(
 // ---------------------------
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/',checkSession,(req,res)=>{
-  res.sendFile(path.join(__dirname,"public","login.html"));
+app.get('/', checkSession, (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
 // Login page (public)
