@@ -63,7 +63,10 @@ app.use(
 // ---------------------------
 app.use(cookieParser());
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5000",
+  origin: [ process.env.CLIENT_URL || "http://localhost:5000",
+    "https://unityngrow.org",            // frontend domain
+    "https://ung-backend.onrender.com"   // backend direct testing
+  ],
   credentials: true
 }));
 
