@@ -67,8 +67,7 @@ app.use(
   cors({
     origin: [
       "https://unityngrow.org",
-      "https://ung-backend.onrender.com",
-      "http://localhost:5000",
+      "https://ung-backend.onrender.com"
     ],
     credentials: true,
   })
