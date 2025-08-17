@@ -7,7 +7,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
-
+const checkSession = requre('./middleware/checkSession')
 // ---------------------------
 // 1. Load environment variables
 // ---------------------------
@@ -109,6 +109,16 @@ app.use(
 // 6. Static file serving
 // ---------------------------
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/',checkSession,(req,res)=>{
+  res.sendFile(path.join(__dirname,"public","login.html"));
+});
+
+// Login page (public)
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // ---------------------------
