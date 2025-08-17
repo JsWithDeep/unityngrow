@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-const { sendOTP } = require("../services/mailService.js");
+const { sendOTP } = require("../services/mailservice");
 
 // 🔧 Generate a 6-character alphanumeric user ID
 const generateUserId = () => uuidv4().split("-")[0].slice(0, 6).toUpperCase();
