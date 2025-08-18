@@ -55,6 +55,7 @@ app.use(
         "'self'",
         "https://unityngrow.org",
         "https://www.unityngrow.org",
+        "https://unityngrow.onrender.com",
       ],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -72,12 +73,14 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: [
-    "https://unityngrow.onrender.com",   // backend
-    "https://unityngrow.org", // frontend if different
-    "http://localhost:3000"              // dev
+    "https://unityngrow.org",   // ✅ your frontend (Hostinger)
+    "https://unityngrow.onrender.com", // backend itself
+    "http://localhost:3000"     // dev
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -87,14 +90,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI
-  }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
   cookie: {
     httpOnly: true,
-    secure: true,       // ✅ required since Render uses HTTPS
-    sameSite: "none",   // ✅ allow cookies on mobile / cross-domain
-    maxAge: 1000 * 60 * 60 * 24  // 1 day
+    secure: true,        // required because your site is https
+    sameSite: "none",    // required for cross-site cookies
+    maxAge: 1000 * 60 * 60 * 24
   }
 }));
 // ---------------------------
