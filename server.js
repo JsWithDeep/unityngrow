@@ -68,16 +68,21 @@ app.use(
 app.use(cookieParser());
 
 
-
-app.use(
-  cors({
-  origin:  [
+const allowedOrigins = [
   "https://unityngrow.org",
-  "https://www.unityngrow.org"
-],
-    credentials: true,
-  })
-);
+  "https://www.unityngrow.org",
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
