@@ -70,9 +70,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    [
+  origin:  [
   "https://unityngrow.org",
-  "https://www.unityngrow.org",
+  "https://www.unityngrow.org"
 ],
     credentials: true,
   })
