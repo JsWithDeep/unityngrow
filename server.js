@@ -88,24 +88,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ✅ Use MongoDB Store for sessions
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "dev_secret",
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
-      collectionName: "sessions",
-    }),
-    cookie: {
-      secure: NODE_ENV === 'production', // only true in production environment
-      httpOnly: true,
-      sameSite: NODE_ENV === 'production' ? 'none' : 'lax',
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-    },
-  })
-);
-
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,          // ✅ required for SameSite=None
+    sameSite: "none",      // ✅ allow cross-site cookies
+    maxAge: 1000 * 60 * 60 * 24, // 1 day
+  }
+}));
 // ---------------------------
 // 6. Static file serving
 // ---------------------------
