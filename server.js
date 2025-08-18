@@ -8,6 +8,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const checkSession = require('./middleware/checkSession')
+app.set('trust proxy', 1);
 // ---------------------------
 // 1. Load environment variables
 // ---------------------------
