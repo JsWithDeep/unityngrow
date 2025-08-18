@@ -98,9 +98,9 @@ app.use(
       collectionName: "sessions",
     }),
     cookie: {
-      secure: true, // ✅ HTTPS only in prod
+      secure: NODE_ENV === 'production', // only true in production environment
       httpOnly: true,
-      sameSite: "none", // ✅ cross-site cookies
+      sameSite: NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
   })
