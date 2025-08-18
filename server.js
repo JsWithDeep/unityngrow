@@ -1,4 +1,5 @@
 const express = require("express");
+app.set('trust proxy', 1);
 const session = require("express-session");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -8,7 +9,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const checkSession = require('./middleware/checkSession')
-app.set('trust proxy', 1);
+
 // ---------------------------
 // 1. Load environment variables
 // ---------------------------
@@ -65,20 +66,14 @@ app.use(
 // ---------------------------
 app.use(cookieParser());
 
-const allowedOrigins = [
-  "https://unityngrow.org",
-  "https://www.unityngrow.org",
-];
+
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    [
+  "https://unityngrow.org",
+  "https://www.unityngrow.org",
+],
     credentials: true,
   })
 );
@@ -97,7 +92,7 @@ app.use(
       collectionName: "sessions",
     }),
     cookie: {
-      secure: NODE_ENV === "production", // ✅ HTTPS only in prod
+      secure: true, // ✅ HTTPS only in prod
       httpOnly: true,
       sameSite: "none", // ✅ cross-site cookies
       maxAge: 1000 * 60 * 60 * 24, // 1 day
