@@ -97,7 +97,7 @@ app.use(
     }),
     cookie: {
       secure: NODE_ENV === "production", // ✅ HTTPS only in prod
-      httpOnly: false,
+      httpOnly: true,
       sameSite: "none", // ✅ cross-site cookies
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
@@ -108,15 +108,6 @@ app.use(
 // 6. Static file serving
 // ---------------------------
 app.use(express.static(path.join(__dirname, "public")));
-
-app.get('/', checkSession, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
-
-// Login page (public)
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
