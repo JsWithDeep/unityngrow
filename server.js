@@ -101,9 +101,25 @@ app.use(session({
 // ---------------------------
 // 6. Static file serving
 // ---------------------------
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// ❌ Disable cache for HTML files (always fetch fresh)
+app.use((req, res, next) => {
+  if (req.url.endsWith(".html")) {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+  }
+  next();
+});
+
+
+app.use(express.static(path.join(__dirname, "public"),{
+  maxage: "1h"
+}));
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads"),{
+  maxAge:"7d"
+}));
 
 // ---------------------------
 // 7. Routes
