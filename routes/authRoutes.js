@@ -94,11 +94,10 @@ router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.error("Logout error:", err);
-      return res.status(500).send({ message: "Logout failed" });
+      return res.status(500).json({ message: "Logout failed" });
     }
-    res.clearCookie("connect.sid"); // Optional: clear session cookie
-    res.clearCookie("userInfo"); // Optional: clear user info cookie
-    res.redirect("/login.html"); // or homepage: res.redirect('/')
+    res.clearCookie("connect.sid", { path: "/", sameSite: "none", secure: true });
+    return res.redirect("/login.html");
   });
 });
 
