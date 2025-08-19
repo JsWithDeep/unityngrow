@@ -96,8 +96,14 @@ router.get("/logout", (req, res) => {
       console.error("Logout error:", err);
       return res.status(500).json({ message: "Logout failed" });
     }
-    res.clearCookie("connect.sid", { path: "/", sameSite: "none", secure: true });
-    return res.redirect("/login.html");
+
+    res.clearCookie("connect.sid", {
+      path: "/",
+      sameSite: "none",
+      secure: true
+    });
+
+    return res.status(200).json({ message: "Logged out successfully" });
   });
 });
 
