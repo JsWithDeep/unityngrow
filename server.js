@@ -95,7 +95,7 @@ app.use(session({
     httpOnly: true,
     secure: true,        // required because your site is https
     sameSite: "none",    // required for cross-site cookies
-    maxAge: 1000 * 60 * 60 * 24
+    maxAge: 1000 * 60 * 60 * 24,
   }
 }));
 // ---------------------------
